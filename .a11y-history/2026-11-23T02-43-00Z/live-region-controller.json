@@ -1,0 +1,15 @@
+{
+  "skill": "live-region-controller",
+  "scope": ["app/page.tsx"],
+  "findings": [
+    {
+      "rule": "LIVE-REGION-REDUNDANCY",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Dynamic announcements repeated native or persistent information.",
+      "fix": "Removed redundant server text and shortened connect/disconnect announcements."
+    }
+  ],
+  "passed": ["Polite status region"]
+}

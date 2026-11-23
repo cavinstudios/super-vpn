@@ -1,0 +1,243 @@
+# Web Accessibility Audit
+
+An audit of web content, run on 2026-11-23. Read the executive summary for the verdict, the priorities section for what to do first, and the findings tables for detail.
+
+## Metadata
+
+What was audited, with what, and under which settings.
+
+| Field | Value |
+|---|---|
+| Date | 2026-11-23 |
+| Scope | 3 items |
+| Skills run | alt-text-headings, aria-specialist, contrast-master, forms-specialist, keyboard-navigator, live-region-controller |
+| Tooling | node v24.21.0, a11y-mcp-server 7.1.0 |
+| Scan configuration | defaults, no config file found |
+| Checks counted | 24 |
+
+Audited:
+
+- `app/globals.css`
+- `app/layout.tsx`
+- `app/page.tsx`
+
+## Executive summary
+
+Pass. No critical or serious findings.
+
+The headline numbers for this run.
+
+| Measure | Value |
+|---|---|
+| Score | 91 out of 100 |
+| Grade | A |
+| Findings | 7 |
+| Blocking (critical plus serious) | 0 |
+| Verdict | Pass |
+
+## Severity breakdown
+
+Counts by severity, highest impact first.
+
+| Severity | Count | What it means |
+|---|---:|---|
+| critical | 0 | Blocks a person from completing the task |
+| serious | 0 | Major barrier with a difficult workaround |
+| moderate | 4 | Real friction, workaround exists |
+| minor | 3 | Noticeable but rarely blocking |
+
+## Findings
+
+7 findings, ordered by severity then by rule.
+
+### Moderate (4)
+
+Each row names the rule, the criterion it fails, where it is, and what to change.
+
+| Rule | WCAG | Location | Problem | Fix |
+|---|---|---|---|---|
+| `CONTRAST-TEXT-001` | 1.4.3 AA | app/globals.css | Feature-card sequence numbers had insufficient contrast. | Changed .feature-number to #566a66. |
+| `CONTRAST-UI-001` | 1.4.11 AA | app/globals.css | The server select border had insufficient component contrast. | Changed the select border to #767f79. |
+| `KBD-001` | 2.4.1 A | app/page.tsx | The skip link target was not focusable. | Added tabIndex=-1 to the main landmark. |
+| `KBD-002` | 2.4.3 A | app/page.tsx | Separate connect and disconnect buttons could lose keyboard focus. | Kept one native session button mounted and changed its label and handler. |
+
+### Minor (3)
+
+Each row names the rule, the criterion it fails, where it is, and what to change.
+
+| Rule | WCAG | Location | Problem | Fix |
+|---|---|---|---|---|
+| `ARIA-REDUNDANT-STATUS` | n/a | app/page.tsx | Explicit live-region attributes duplicated status-role semantics. | Removed redundant aria-live and aria-atomic attributes. |
+| `LIVE-REGION-REDUNDANCY` | n/a | app/page.tsx | Dynamic announcements repeated native or persistent information. | Removed redundant server text and shortened connect/disconnect announcements. |
+| `SVG-DECORATIVE` | n/a | app/page.tsx | Decorative SVG components can receive focus in legacy browsers. | Added focusable=false to decorative SVG elements. |
+
+## Remediation priorities
+
+The remaining 7 moderate and minor findings can follow in normal work.
+
+## What passed
+
+17 checks ran and found nothing.
+
+- 24px target sizes
+- Clear names
+- Decorative icons hidden
+- Descriptive title
+- Lang and landmarks
+- Logical heading outline
+- Logical tab order
+- Native control semantics
+- Native controls
+- One descriptive H1
+- Polite status region
+- Programmatic instructions
+- Server select label
+- Skip link
+- Text and status contrast rechecked after fixes
+- Valid ID relationships
+- Visible focus outlines
+
+## Next steps
+
+1. Keep the current checks in continuous integration so this does not regress.
+2. Re-audit when the interface changes materially, or quarterly.
+3. Confirm the automated result with a manual screen reader and keyboard pass.
+
+Automated checks find a minority of accessibility barriers. A passing score is a floor, not a guarantee.
+
+## Findings data
+
+The merged findings, embedded so the next run can compute a delta without parsing this document.
+
+```json a11y-findings
+{
+  "skills": [
+    "alt-text-headings",
+    "aria-specialist",
+    "contrast-master",
+    "forms-specialist",
+    "keyboard-navigator",
+    "live-region-controller"
+  ],
+  "scope": [
+    "app/globals.css",
+    "app/layout.tsx",
+    "app/page.tsx"
+  ],
+  "findings": [
+    {
+      "rule": "CONTRAST-TEXT-001",
+      "wcag": "1.4.3 AA",
+      "severity": "moderate",
+      "location": "app/globals.css",
+      "summary": "Feature-card sequence numbers had insufficient contrast.",
+      "fix": "Changed .feature-number to #566a66.",
+      "foundBy": [
+        "contrast-master"
+      ],
+      "alsoReportedAs": [
+        "CONTRAST-STATUS-001"
+      ]
+    },
+    {
+      "rule": "CONTRAST-UI-001",
+      "wcag": "1.4.11 AA",
+      "severity": "moderate",
+      "location": "app/globals.css",
+      "summary": "The server select border had insufficient component contrast.",
+      "fix": "Changed the select border to #767f79.",
+      "foundBy": [
+        "contrast-master"
+      ]
+    },
+    {
+      "rule": "KBD-001",
+      "wcag": "2.4.1 A",
+      "severity": "moderate",
+      "location": "app/page.tsx",
+      "summary": "The skip link target was not focusable.",
+      "fix": "Added tabIndex=-1 to the main landmark.",
+      "foundBy": [
+        "keyboard-navigator"
+      ]
+    },
+    {
+      "rule": "KBD-002",
+      "wcag": "2.4.3 A",
+      "severity": "moderate",
+      "location": "app/page.tsx",
+      "summary": "Separate connect and disconnect buttons could lose keyboard focus.",
+      "fix": "Kept one native session button mounted and changed its label and handler.",
+      "foundBy": [
+        "keyboard-navigator"
+      ]
+    },
+    {
+      "rule": "ARIA-REDUNDANT-STATUS",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Explicit live-region attributes duplicated status-role semantics.",
+      "fix": "Removed redundant aria-live and aria-atomic attributes.",
+      "foundBy": [
+        "aria-specialist"
+      ]
+    },
+    {
+      "rule": "LIVE-REGION-REDUNDANCY",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Dynamic announcements repeated native or persistent information.",
+      "fix": "Removed redundant server text and shortened connect/disconnect announcements.",
+      "foundBy": [
+        "live-region-controller"
+      ]
+    },
+    {
+      "rule": "SVG-DECORATIVE",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Decorative SVG components can receive focus in legacy browsers.",
+      "fix": "Added focusable=false to decorative SVG elements.",
+      "foundBy": [
+        "alt-text-headings"
+      ]
+    }
+  ],
+  "passed": [
+    "24px target sizes",
+    "Clear names",
+    "Decorative icons hidden",
+    "Descriptive title",
+    "Lang and landmarks",
+    "Logical heading outline",
+    "Logical tab order",
+    "Native control semantics",
+    "Native controls",
+    "One descriptive H1",
+    "Polite status region",
+    "Programmatic instructions",
+    "Server select label",
+    "Skip link",
+    "Text and status contrast rechecked after fixes",
+    "Valid ID relationships",
+    "Visible focus outlines"
+  ],
+  "notes": [],
+  "counts": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 4,
+    "minor": 3
+  },
+  "components": [],
+  "score": 91,
+  "grade": "A",
+  "penalty": 11,
+  "checks": 24,
+  "generated": "2026-11-23",
+  "template": "web"
+}
+```

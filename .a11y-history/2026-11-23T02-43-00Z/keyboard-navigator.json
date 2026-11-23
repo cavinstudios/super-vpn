@@ -1,0 +1,23 @@
+{
+  "skill": "keyboard-navigator",
+  "scope": ["app/page.tsx", "app/globals.css"],
+  "findings": [
+    {
+      "rule": "KBD-001",
+      "wcag": "2.4.1 A",
+      "severity": "moderate",
+      "location": "app/page.tsx",
+      "summary": "The skip link target was not focusable.",
+      "fix": "Added tabIndex=-1 to the main landmark."
+    },
+    {
+      "rule": "KBD-002",
+      "wcag": "2.4.3 A",
+      "severity": "moderate",
+      "location": "app/page.tsx",
+      "summary": "Separate connect and disconnect buttons could lose keyboard focus.",
+      "fix": "Kept one native session button mounted and changed its label and handler."
+    }
+  ],
+  "passed": ["Native controls", "Visible focus outlines", "24px target sizes", "Logical tab order"]
+}

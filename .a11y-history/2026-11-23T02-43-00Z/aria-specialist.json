@@ -1,0 +1,15 @@
+{
+  "skill": "aria-specialist",
+  "scope": ["app/page.tsx", "app/layout.tsx"],
+  "findings": [
+    {
+      "rule": "ARIA-REDUNDANT-STATUS",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Explicit live-region attributes duplicated status-role semantics.",
+      "fix": "Removed redundant aria-live and aria-atomic attributes."
+    }
+  ],
+  "passed": ["Valid ID relationships", "Decorative icons hidden"]
+}

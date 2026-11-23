@@ -1,0 +1,6 @@
+{
+  "skill": "forms-specialist",
+  "scope": ["app/page.tsx"],
+  "findings": [],
+  "passed": ["Server select label", "Programmatic instructions", "Native control semantics", "Clear names"]
+}

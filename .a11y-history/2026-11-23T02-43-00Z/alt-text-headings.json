@@ -1,0 +1,15 @@
+{
+  "skill": "alt-text-headings",
+  "scope": ["app/page.tsx", "app/layout.tsx"],
+  "findings": [
+    {
+      "rule": "SVG-DECORATIVE",
+      "wcag": "n/a",
+      "severity": "minor",
+      "location": "app/page.tsx",
+      "summary": "Decorative SVG components can receive focus in legacy browsers.",
+      "fix": "Added focusable=false to decorative SVG elements."
+    }
+  ],
+  "passed": ["One descriptive H1", "Logical heading outline", "Descriptive title", "Lang and landmarks", "Skip link"]
+}

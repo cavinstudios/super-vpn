@@ -1,0 +1,31 @@
+{
+  "skill": "contrast-master",
+  "scope": ["app/page.tsx", "app/globals.css"],
+  "findings": [
+    {
+      "rule": "CONTRAST-TEXT-001",
+      "wcag": "1.4.3 AA",
+      "severity": "moderate",
+      "location": "app/globals.css",
+      "summary": "Feature-card sequence numbers had insufficient contrast.",
+      "fix": "Changed .feature-number to #566a66."
+    },
+    {
+      "rule": "CONTRAST-UI-001",
+      "wcag": "1.4.11 AA",
+      "severity": "moderate",
+      "location": "app/globals.css",
+      "summary": "The server select border had insufficient component contrast.",
+      "fix": "Changed the select border to #767f79."
+    },
+    {
+      "rule": "CONTRAST-STATUS-001",
+      "wcag": "1.4.11 AA",
+      "severity": "moderate",
+      "location": "app/globals.css",
+      "summary": "Disconnected status dots had insufficient contrast.",
+      "fix": "Changed status dots to #6f7e77."
+    }
+  ],
+  "passed": ["Text and status contrast rechecked after fixes"]
+}
