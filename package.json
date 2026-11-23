@@ -1,21 +1,20 @@
 {
-  "name": "super-vpn",
+  "name": "supervpn-monorepo",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.11.0",
+  "engines": { "node": ">=20.11" },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "node scripts/serve.mjs"
-  },
-  "dependencies": {
-    "next": "^15.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "build": "pnpm -r --filter './packages/**' build && pnpm -r --filter './apps/**' build",
+    "build:core": "pnpm --filter @supervpn/core build",
+    "dev": "pnpm --filter @supervpn/web dev",
+    "start": "pnpm --filter @supervpn/web start",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r --if-present lint"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }
